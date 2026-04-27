@@ -3,7 +3,6 @@
 
     $gestor=new Gestor();
     $videojuegoController=new VideojuegoController($gestor);
-    $usuarioController=new UsuarioController($gestor);
 
     $accion=$_GET['accion'] ?? "index";
 
