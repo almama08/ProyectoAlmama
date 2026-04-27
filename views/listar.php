@@ -7,6 +7,7 @@
     </head>
     <body>
         <h2>Lista de Videojuegos</h2>
+        <a href="index.php?accion=añadir">Añadir nuevo videojuego</a><br>
 
         <div class="container-fluid">
             <table class="table table-striped">
