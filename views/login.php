@@ -23,6 +23,7 @@
             <label>Contraseña:</label>
             <input type="password" name="password" required minlength="4">
         </p>
+        <input type="checkbox" name="recordarme">Recordarme en este equipo<br><br>
         <button type="submit" class="btn btn-success">Acceder</button>
     </form>
 

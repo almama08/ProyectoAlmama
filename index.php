@@ -8,6 +8,19 @@
 
     $accion=$_GET['accion'] ?? "index";
 
+    if(!isset($_SESSION['usuario_id']) && isset($_COOKIE['usuario_login'])){
+        $emailRecuperado=base64_decode($_COOKIE['usuario_login']);
+
+        $usuario=$gestor->buscarUsuarioPorEmail($emailRecuperado);
+
+        if($usuario){
+            $_SESSION['usuario_id']=$usuario->getId();
+            $_SESSION['usuario_email']=$usuario->getEmail();
+        }else{
+            setcookie('usuario_login','',time()-3600,'/');
+        }
+    }
+
     switch($accion){
         //opciones gestión usuarios
         case 'login':
