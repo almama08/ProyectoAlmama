@@ -1,15 +1,16 @@
 <?php
 
-    class Gestor extends Connection{
+    class Gestor{
+        private $db;
 
         function __construct(){
-            parent::__construct();
+            $this->db=Connection::getInstance()->getconn();
         }
 
         public function listar(){
             $lista=[];
             $consulta='SELECT * FROM juegos';
-            $stmt=$this->getConn()->query($consulta);
+            $stmt=$this->db->query($consulta);
             $variantesAccion=['Acción','Accion','acción','accion'];
             while($value=$stmt->fetch(PDO::FETCH_ASSOC)){
                 if(in_array($value['genero'],$variantesAccion)){
@@ -36,7 +37,7 @@
             $sql='INSERT into juegos (nombre, duracion, genero, tipo_armas, tipo_terror)
             VALUES (:nombre, :duracion, :genero, :tipo_armas, :tipo_terror)';
 
-            $stmt=$this->getConn()->prepare($sql);
+            $stmt=$this->db->prepare($sql);
 
             $genero=get_class($juego);
 
@@ -60,14 +61,14 @@
 
         public function eliminar($id){
             $sql='DELETE FROM juegos WHERE id=:id';
-            $stmt=$this->getconn()->prepare($sql);
+            $stmt=$this->db->prepare($sql);
             $stmt->bindValue(':id',$id);
             return $stmt->execute();
         }
 
         public function buscarJuegoPorId($id){
             $sql='SELECT * FROM juegos WHERE id=:id';
-            $stmt=$this->getConn()->prepare($sql);
+            $stmt=$this->db->prepare($sql);
             $stmt->bindvalue(':id',$id);
             $stmt->execute();
 
@@ -98,7 +99,7 @@
                 $genero=$juego->getGenero();
             }
 
-            $stmt=$this->getconn()->prepare($sql);
+            $stmt=$this->db->prepare($sql);
 
             $stmt->bindValue(':nombre',$juego->getNombre());
             $stmt->bindValue(':duracion',$juego->getDuracion());
@@ -111,7 +112,7 @@
 
         public function registroUsuario(Usuario $usuario){
             $sql='INSERT INTO usuarios (email, password) VALUES (:email,:password)';
-            $stmt=$this->getConn()->prepare($sql);
+            $stmt=$this->db->prepare($sql);
 
             $stmt->bindValue(':email',$usuario->getEmail());
             $stmt->bindValue(':password',$usuario->getPassword());
@@ -121,7 +122,7 @@
 
         public function buscarUsuarioPorEmail($email){
             $sql='SELECT * FROM usuarios WHERE email= :email LIMIT 1';
-            $stmt=$this->getConn()->prepare($sql);
+            $stmt=$this->db->prepare($sql);
             $stmt->bindValue(':email',$email);
             $stmt->execute();
 
