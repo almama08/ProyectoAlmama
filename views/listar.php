@@ -7,7 +7,7 @@
     </head>
     <body>
         <h2>Lista de Videojuegos</h2>
-        <a href="index.php?accion=añadir">Añadir nuevo videojuego</a><br>
+        <a href="index.php?accion=añadir" class="btn btn-success btn-lg">Añadir nuevo videojuego</a><br>
 
         <div class="container-fluid">
             <table class="table table-striped">
@@ -36,8 +36,8 @@
                             ?>
                         </td>
                         <td>
-                            <a href="index.php?accion=editar&id=<?= $juego->getId() ?>">Editar</a>
-                            <a href="index.php?accion=eliminar&id=<?= $juego->getId() ?>" onclick="return confirm('Eliminar este videojuego?')">Eliminar</a>
+                            <a href="index.php?accion=editar&id=<?= $juego->getId() ?>" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="index.php?accion=eliminar&id=<?= $juego->getId() ?>" onclick="return confirm('Eliminar este videojuego?')" class="btn btn-danger btn-sm">Eliminar</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>

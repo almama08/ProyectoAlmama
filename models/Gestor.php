@@ -36,7 +36,7 @@
             $sql='INSERT into juegos (nombre, duracion, genero, tipo_armas, tipo_terror)
             VALUES (:nombre, :duracion, :genero, :tipo_armas, :tipo_terror)';
 
-            $stmt=$this->conn->prepare($sql);
+            $stmt=$this->getConn()->prepare($sql);
 
             $genero=get_class($juego);
 
@@ -56,6 +56,13 @@
                 ':tipo_armas'=>$tipoArmas,
                 ':tipo_terror'=>$tipoTerror
             ]);
+        }
+
+        public function eliminar($id){
+            $sql='DELETE FROM juegos WHERE id=:id';
+            $stmt=$this->getconn()->prepare($sql);
+            $stmt->bindValue(':id',$id);
+            return $stmt->execute();
         }
     }
 
