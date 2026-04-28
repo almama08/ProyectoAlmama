@@ -7,7 +7,7 @@
             $this->gestor=$gestor;
         }
 
-        public function index($colorRecibido){
+        public function index($colorRecibido='white'){
             $lista=$this->gestor->listar();
 
             $color=$colorRecibido;

@@ -69,6 +69,10 @@
                 setcookie('usuario_login','',time()-3600000,'/');
             }
 
+            if(isset($_COOKIE['usuario_color'])){
+                setcookie('usuario_color','',time()-360000,'/');
+            }
+
             header('Location: index.php?accion=login');
             exit;
         }

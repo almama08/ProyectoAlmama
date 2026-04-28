@@ -12,7 +12,7 @@
         }
 
         public function setTipoTerror($tipoTerror){
-            $this->tipoArmas = $tipoTerror;
+            $this->tipoTerror = $tipoTerror;
         }
 
         public function getGenero(){

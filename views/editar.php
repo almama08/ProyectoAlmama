@@ -26,7 +26,7 @@
 
         <?php if(get_class($juego)=="Terror"): ?>
             <p>
-                <label">Tipo de terror:</label>
+                <label>Tipo de terror:</label>
                 <select name="tipoTerror">
                     <option value="Psicológico" <?= ($juego->getTipoTerror() == "Psicológico") ? "selected" : "" ?>>Psicológico</option>
                     <option value="Survival horror" <?= ($juego->getTipoTerror() == "Survival horror") ? "selected" : "" ?>>Survival horror</option>
@@ -34,7 +34,7 @@
             </p>
         <?php elseif(get_class($juego)=="Accion"): ?>
             <p>
-                <label">Tipo de armas:</label>
+                <label>Tipo de armas:</label>
                 <select name="tipoArmas">
                     <option value="Cuerpo a cuerpo" <?= ($juego->getTipoArmas() == "Cuerpo a cuerpo") ? "selected" : "" ?>>Cuerpo a cuerpo</option>
                     <option value="A distancia" <?= ($juego->getTipoArmas() == "A distancia") ? "selected" : "" ?>>A distancia</option>
