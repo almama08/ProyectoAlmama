@@ -64,6 +64,50 @@
             $stmt->bindValue(':id',$id);
             return $stmt->execute();
         }
+
+        public function buscarJuegoPorId($id){
+            $sql='SELECT * FROM juegos WHERE id=:id';
+            $stmt=$this->getConn()->prepare($sql);
+            $stmt->bindvalue(':id',$id);
+            $stmt->execute();
+
+            $res=$stmt->fetch(PDO::FETCH_ASSOC);
+
+            if($res){
+                if($res['genero']=="Terror"){
+                    return new Terror($res['nombre'],$res['duracion'],$res['tipo_terror'],$res['id']);
+                }else{
+                    return new Accion($res['nombre'],$res['duracion'],$res['tipo_armas'],$res['id']);
+                }
+            }
+            return null;
+        }
+
+        public function modificar($juego){
+            if($juego instanceof Terror){
+                $sql='UPDATE juegos SET nombre=:nombre,
+                duracion=:duracion, genero=:genero,tipo_terror=:especifico,
+                tipo_armas=NULL WHERE id=:id';
+                $especifico=$juego->getTipoTerror();
+                $genero=$juego->getGenero();
+            }else{
+                $sql='UPDATE juegos SET nombre=:nombre,
+                duracion=:duracion, genero=:genero,tipo_armas=:especifico,
+                tipo_terror=NULL WHERE id=:id';
+                $especifico=$juego->getTipoArmas();
+                $genero=$juego->getGenero();
+            }
+
+            $stmt=$this->getconn()->prepare($sql);
+
+            $stmt->bindValue(':nombre',$juego->getNombre());
+            $stmt->bindValue(':duracion',$juego->getDuracion());
+            $stmt->bindValue(':genero',$genero);
+            $stmt->bindValue(':especifico',$especifico);
+            $stmt->bindValue(':id',$juego->getId());
+
+            return $stmt->execute();
+        }
     }
 
 ?>

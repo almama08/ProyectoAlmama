@@ -14,5 +14,10 @@
         public function setTipoTerror($tipoTerror){
             $this->tipoArmas = $tipoTerror;
         }
+
+        public function getGenero(){
+            $aux="Terror";
+            return $aux;
+        }
     }
 ?>

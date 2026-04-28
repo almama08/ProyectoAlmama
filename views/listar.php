@@ -25,7 +25,7 @@
                     <tr>
                         <td><?= $juego->getNombre() ?></td>
                         <td><?= $juego->getDuracion() ?></td>
-                        <td><?= get_class($juego) ?></td>
+                        <td><?= $juego->getGenero() ?></td>
                         <td>
                             <?php
                                 if($juego instanceof Accion){

@@ -14,5 +14,10 @@
         public function setTipoArmas($tipoArmas){
             $this->tipoArmas = $tipoArmas;
         }
+
+        public function getGenero(){
+            $aux="Acción";
+            return $aux;
+        }
     }
 ?>
