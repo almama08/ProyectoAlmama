@@ -11,7 +11,8 @@
     <h2>Añadir videojuego</h2>
     <p class="lead">¿Qué tipo de videojuego quieres añadir?</p>
     <a href="index.php?accion=añadirTerror" class="btn btn-danger btn-lg">Añadir videojuego de terror</a><br><br>
-    <a href="index.php?accion=añadirAccion" class="btn btn-danger btn-lg">Añadir videojuego de acción</a><br>
+    <a href="index.php?accion=añadirAccion" class="btn btn-danger btn-lg">Añadir videojuego de acción</a><br><br>
+    <a href="index.php" class="btn btn-default btn-sm">Volver atrás</a>
 
 </body>
 </html>

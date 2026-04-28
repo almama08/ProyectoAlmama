@@ -108,6 +108,30 @@
 
             return $stmt->execute();
         }
+
+        public function registroUsuario(Usuario $usuario){
+            $sql='INSERT INTO usuarios (email, password) VALUES (:email,:password)';
+            $stmt=$this->getConn()->prepare($sql);
+
+            $stmt->bindValue(':email',$usuario->getEmail());
+            $stmt->bindValue(':password',$usuario->getPassword());
+
+            return $stmt->execute();
+        }
+
+        public function buscarUsuarioPorEmail($email){
+            $sql='SELECT * FROM usuarios WHERE email= :email LIMIT 1';
+            $stmt=$this->getConn()->prepare($sql);
+            $stmt->bindValue(':email',$email);
+            $stmt->execute();
+
+            $value=$stmt->fetch(PDO::FETCH_ASSOC);
+
+            if($value){
+                return new Usuario($value['email'],$value['password'],$value['id']);
+            }
+            return false;
+        }
     }
 
 ?>

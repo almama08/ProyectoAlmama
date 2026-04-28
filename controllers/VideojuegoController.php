@@ -1,7 +1,7 @@
 <?php
 
     class VideojuegoController{
-        protected $gestor;
+        private $gestor;
 
         function __construct($gestor){
             $this->gestor=$gestor;

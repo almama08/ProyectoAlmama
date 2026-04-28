@@ -22,7 +22,9 @@
             <option value="Survival horror">Survival Horror</option>
         </select><br>
 
-        <button type="submit">Añadir videojuego</button>
+        <button type="submit" class="btn btn-success btn-lg">Añadir videojuego</button>
     </form>
+    <br>
+    <a href="index.php?accion=añadir" class="btn btn-default btn-sm">volver atrás</a>
 </body>
 </html>
