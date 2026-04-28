@@ -7,8 +7,10 @@
             $this->gestor=$gestor;
         }
 
-        public function index(){
+        public function index($colorRecibido){
             $lista=$this->gestor->listar();
+
+            $color=$colorRecibido;
 
             include "views/listar.php";
         }

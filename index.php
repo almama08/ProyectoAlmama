@@ -2,6 +2,12 @@
     session_start();
     require_once "autoload.php";
 
+    $color=$_POST['color'] ?? $_COOKIE['usuario_color'] ?? 'white';
+
+    if(isset($_POST['color'])){
+        setcookie('usuario_color',$_POST['color'],time()+(86400*30),'/');
+    }
+
     $gestor=new Gestor();
     $videojuegoController=new VideojuegoController($gestor);
     $usuarioController=new UsuarioController($gestor);
@@ -49,7 +55,7 @@
             if($accion=='añadirAccion')$videojuegoController->añadirAccion();
             break;
         default:
-            $videojuegoController->index();
+            $videojuegoController->index($color);
             break;
     }
 ?>

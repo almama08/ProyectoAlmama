@@ -5,20 +5,32 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     </head>
-    <body>
+    <body style="background-color: <?= $color ?>;">
         <h2>Lista de Videojuegos</h2>
 
         <?php if(isset($_SESSION['usuario_id'])): ?>
             <p>Bienvenido, <?= $_SESSION['usuario_email'] ?></p>
+
+            <form method="POST">
+                <p>
+                    <label>Elige un tema (Oscuro o claro):</label>
+                    <select name="color">
+                        <option value="white" <?php if($color=="white") echo "selected"; ?>>Claro</option>
+                        <option value="grey" <?php if($color=="grey") echo "selected"; ?>>Oscuro</option>
+                    </select>
+                    <button type="submit">Guardar color</button>
+                </p>
+            </form>
+
             <a href="index.php?accion=logout" class="glyphicon glyphicon-off">Cerrar sesión</a><br><br>
             <a href="index.php?accion=añadir" class="btn btn-success btn-lg">Añadir nuevo videojuego</a><br>
         <?php else: ?>
             <a href="index.php?accion=registroUsuario" class="glyphicon glyphicon-user">Registrarse</a><br>
-            <a href="index.php?accion=login" class="glyphicon glyphicon-log-in">Iniciar sesión</a><br>
+            <a href="index.php?accion=login" class="glyphicon glyphicon-log-in">Iniciar sesión</a><br><br>
         <?php endif; ?>
 
         <div class="container-fluid">
-            <table class="table table-striped">
+            <table class="table table-bordered <?= ($color == 'grey') ? '' : 'table-striped table-hover' ?>">
                 <thead>
                     <tr>
                         <th>Nombre</th>
